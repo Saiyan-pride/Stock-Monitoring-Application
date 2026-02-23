@@ -1,14 +1,15 @@
 import React, { useState, useContext } from "react";
 
-// import GeneralContext from "./GeneralContext";
+import GeneralContext from "./GeneralContext";
 
-import Tooltip from "@mui/material/Tooltip";
-import Grow from "@mui/material/Grow";
+import { Tooltip, Grow } from "@mui/material";
 
-import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUp from "@mui/icons-material/KeyboardArrowUp";
-import BarChartOutlined from "@mui/icons-material/BarChartOutlined";
-import MoreHoriz from "@mui/icons-material/MoreHoriz";
+import {
+  BarChartOutlined,
+  KeyboardArrowDown,
+  KeyboardArrowUp,
+  MoreHoriz,
+} from "@mui/icons-material";
 
 import { watchlist } from "../Data/data";
 
@@ -68,10 +69,13 @@ const WatchListItem = ({ stock }) => {
 };
 
 const WatchListActions = ({ uid }) => {
-  //   const generalContext = useContext(GeneralContext);
+  const generalContext = useContext(GeneralContext);
 
   const handleBuyClick = () => {
-    // generalContext.openBuyWindow(uid);
+    generalContext.openBuyWindow(uid);
+  };
+  const handleSellClick = () => {
+    generalContext.openSellWindow(uid);
   };
 
   return (
@@ -91,6 +95,7 @@ const WatchListActions = ({ uid }) => {
           placement="top"
           arrow
           TransitionComponent={Grow}
+          onClick={handleSellClick}
         >
           <button className="sell">Sell</button>
         </Tooltip>
