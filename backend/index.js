@@ -9,10 +9,14 @@ const PositionsModel = require("./models/PositionsModel");
 const OrdersModel = require("./models/OrdersModel");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const authRoute = require("./Route/AuthRoute");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+app.use(cookieParser());
+app.use("/", authRoute);
 
 // one time data entry
 
